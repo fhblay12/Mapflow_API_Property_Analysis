@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 ### 4. Configure API Key
 
-1. Create a file named `Mapflow_API_key.txt` in the project root
+1. Create a .env file in the project root
 2. Add your Mapflow API key (as base64 encoded credentials):
    ```
    Mapflow_API_Key=<your_base64_encoded_credentials>
