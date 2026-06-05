@@ -108,6 +108,26 @@ The script will:
    - `geojson_output/` - Raw Mapflow results (GeoJSON)
    - `finaljson_output/` - Processed results (JSON and KML)
 
+## Library Usage
+
+If you want to reuse this project as a library from another Python project, import the package instead of using the script.
+
+Example:
+
+```python
+from geojson_plotter import MapflowClient, mapflow_geojson_to_properties, json_to_kml
+
+client = MapflowClient(key_file="Mapflow_API_key.txt")
+geometry = client.load_aoi_geojson("aoi_input/input.geojson")
+project_id = "8ebb9d48-299c-47cb-afa9-e61dc1729f71"
+response = client.create_processing(project_id=project_id, name="My Project", aoi_polygon=geometry)
+client.download_results(response["id"])
+mapflow_geojson_to_properties("geojson_output/{response['id']}_results.geojson")
+json_to_kml("finaljson_output/all_buildings.json")
+```
+
+You can also call the package functions directly without using the command-line script.
+
 ## Project Structure
 
 ```
